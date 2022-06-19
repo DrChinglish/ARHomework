@@ -31,7 +31,7 @@ struct ARViewContainer: UIViewRepresentable {
         arView.session.run(config, options: [])
         
         arView.scene.anchors.append(boxAnchor)
-        arView.setupGestures()
+        
         
         // Add the box anchor to the scene
         
@@ -44,19 +44,6 @@ struct ARViewContainer: UIViewRepresentable {
     
 }
 
-extension ARView{
-    func setupGestures(){
-        
-        for i in 0..<16{
-            var entity = boxAnchor.findEntity(named: "b\(i)")
-            self.installGestures(.translation, for: entity as! HasCollision)
-            entity = boxAnchor.findEntity(named: "w\(i)")
-            self.installGestures(.translation, for: entity as! HasCollision)
-        }
-        
-        
-    }
-}
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
